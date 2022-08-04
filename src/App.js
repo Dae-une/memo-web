@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Layouts from "./Layouts/Layouts";
+import dayjs from "dayjs";
+import isLeapYear from "dayjs/plugin/isLeapYear"; // 윤년 판단 플러그인
+import "dayjs/locale/ko"; // 한국어 가져오기
+
+dayjs.extend(isLeapYear); // 플러그인 등록
+dayjs.locale("ko"); // 언어 등록
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<Layouts />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
